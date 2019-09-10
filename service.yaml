@@ -1,0 +1,22 @@
+apiVersion: serving.knative.dev/v1alpha1
+kind: Service
+metadata:
+  name: process
+  namespace: process
+spec:
+  template:
+    spec:
+      containers:
+        - image: docker.io/lallinger/process:latest
+          imagePullPolicy: Always
+          env:
+            - name: STORAGE_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: storage-account-secret
+                  key: username
+            - name: STORAGE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: storage-account-secret
+                  key: password
