@@ -8,7 +8,7 @@ spec:
     spec:
       containers:
         - image: docker.io/lallinger/process:latest
-          imagePullPolicy: Always
+          imagePullPolicy: IfNotPresent
           env:
             - name: STORAGE_USERNAME
               valueFrom:
